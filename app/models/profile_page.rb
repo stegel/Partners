@@ -10,6 +10,8 @@ class ProfilePage < Page
 		partner = Partner.find_by_id(partner_id)
 
 		result = []
+		
+		tag.locals.page.title = partner.name
 
 		tag.locals.data = partner
 
@@ -72,7 +74,7 @@ class ProfilePage < Page
 					output += '<ul class="partner-photos">'
 					set[0..total-1].each do |photo|
 						thumb = "http://farm#{photo['farm']}.static.flickr.com/#{photo['server']}/#{photo['id']}_#{photo['secret']}_m.jpg"
-						output += %{<li><a href="http://flickr.com/photos/ctshowerandbath/#{photo['id']}"><img src="#{thumb}" alt="#{photo['title']}" /></a></li>}
+						output += %{<li><img src="#{thumb}" alt="#{photo['title']}" /></li>}
 					end
 					output += "</ul>"
 				end

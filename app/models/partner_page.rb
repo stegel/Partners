@@ -4,10 +4,21 @@ class PartnerPage < Page
 	}
 
 	def child_url(child)
+		clean_url "#{ url }/"
+	end
+
+	def find_by_url(url, live = true, clean = false)
+		url = clean_url(url) if clean
+		if url =~ %r{^#{ self.url }(\d{1,6})/?$}
+			children.find_by_class_name('ProfilePage')
+		else
+			super
+		end
 	end
 
 	tag "partners" do |tag|
-		partners = Partner.find(:all)
+		type = tag.attr['type']
+		partners = Partner.find(:all, :conditions => "partner_type = #{type}" )
 		result = []
 		partners.each do |partner|
 			tag.locals.data = partner
@@ -16,16 +27,12 @@ class PartnerPage < Page
 		result
 	end
 
-	desc %{
-		Output company fax 
-	}
-	tag "fax" do |tag|
-		tag.locals.data.fax
+	tag "link" do |tag|
+		"<a href='#{self.url}#{tag.locals.data.id}'>#{tag.locals.data.name}</a>"
 	end
 
-	tag "title" do |tag|
-		page = tag.locals.page
-		page.title
+	tag "description" do |tag|
+		tag.locals.data.description
 	end
 
 end

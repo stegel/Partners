@@ -15,6 +15,7 @@ class PartnersExtension < Radiant::Extension
   def activate
     # admin.tabs.add "Partners", "/admin/partners", :after => "Layouts", :visibility => [:all]
 	PartnerPage
+	ProfilePage
   end
   
   def deactivate

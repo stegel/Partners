@@ -5,15 +5,20 @@ class PartnersExtension < Radiant::Extension
   version "1.1"
   description "Display partner information as a list and individual profiles"
   url "http://yourwebsite.com/partners"
-  
-  # define_routes do |map|
-  #   map.namespace :admin, :member => { :remove => :get } do |admin|
-  #     admin.resources :partners
-  #   end
-  # end
+ 
+  define_routes do |map|
+	map.namespace :admin, :member => { :remove => :get } do |admin|
+	 	admin.resources :partners
+	end
+
+	map.resources :partners
+	
+  end
   
   def activate
-    # admin.tabs.add "Partners", "/admin/partners", :after => "Layouts", :visibility => [:all]
+	tab "Manage Site" do
+		add_item('Partners','/admin/partners')
+	end
 	PartnerPage
 	ProfilePage
   end

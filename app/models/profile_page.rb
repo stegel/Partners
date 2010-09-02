@@ -64,21 +64,21 @@ class ProfilePage < Page
 	tag "album" do |tag|
 		output = ''
 
-			json = Net::HTTP.get(URI.parse("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&photoset_id=#{tag.locals.data.flickr_id}+&api_key=6f977fc52e81b8f45764d91ab84999c2&format=json&nojsoncallback=1"))
-			result = ActiveSupport::JSON.decode(json)
-			unless result['stat'] == "fail"	
-				set = result['photoset']['photo']
+		json = Net::HTTP.get(URI.parse("http://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&photoset_id=#{tag.locals.data.flickr_id}+&api_key=6f977fc52e81b8f45764d91ab84999c2&format=json&nojsoncallback=1"))
+		result = ActiveSupport::JSON.decode(json)
+		unless result['stat'] == "fail"	
+			set = result['photoset']['photo']
 			
-				total = 5
-				unless set.empty?
-					output += '<ul class="partner-photos">'
-					set[0..total-1].each do |photo|
-						thumb = "http://farm#{photo['farm']}.static.flickr.com/#{photo['server']}/#{photo['id']}_#{photo['secret']}_m.jpg"
-						output += %{<li><img src="#{thumb}" alt="#{photo['title']}" /></li>}
-					end
-					output += "</ul>"
+			total = 5
+			unless set.empty?
+				output += '<ul class="partner-photos">'
+				set[0..total-1].each do |photo|
+					thumb = "http://farm#{photo['farm']}.static.flickr.com/#{photo['server']}/#{photo['id']}_#{photo['secret']}_m.jpg"
+					output += %{<li><img src="#{thumb}" alt="#{photo['title']}" /></li>}
 				end
+				output += "</ul>"
 			end
+		end
 
 		output
 	

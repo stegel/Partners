@@ -1,0 +1,16 @@
+<table>
+	<thead>
+		<tr>
+			<th>Partner</th>
+			<th>Website</th>
+			<th>Manage</th>
+		</tr>
+	</thead>
+<% @partners.each do |partner| %>
+	<tr>
+		<td><%= partner.name %></td>
+		<td><%= link_to partner.website, partner.website  %></td>
+		<td><%= link_to "Edit", edit_admin_partner_url(partner) %></td>
+	</tr>
+<% end %>
+</table>

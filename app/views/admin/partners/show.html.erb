@@ -1,0 +1,12 @@
+<h1><%= @partner.name %></h1>
+<p><%= @partner.description %></p>
+<h2>Contact Info</h2>
+<%= @partner.contact_name %><br />
+<%= @partner.address %><br />
+<%= "#{@partner.city}, #{@partner.state} #{@partner.zip}"  %><br />
+<span class="field">Business Phone</span><span class="value"><%= @partner.business %></span><br />
+<span class="field">Cell Phone</span><span class="value"><%= @partner.cell %></span><br />
+<span class="field">Fax</span><span class="value"><%= @partner.fax %></span><br />
+<span class="field">Website</span><span class="value"><%= @partner.website %></span><br />
+<span class="field">Flickr Photoset</span><span class="value"><%= @partner.photoset %></span><br />
+<%= link_to "Edit", edit_admin_partner_url(@partner) %>&nbsp;&nbsp;|&nbsp;&nbsp;<%= link_to "Delete", admin_partner_url(@partner), :method => :delete %>

@@ -7,11 +7,12 @@ class PartnersExtension < Radiant::Extension
   url "http://yourwebsite.com/partners"
  
   define_routes do |map|
-	map.namespace :admin, :member => { :remove => :get } do |admin|
-	 	admin.resources :partners
-	end
+    
+    map.namespace :admin do |admin|
+      admin.resources :partners
+    end
 
-	map.resources :partners
+    map.resources :partners
 	
   end
   

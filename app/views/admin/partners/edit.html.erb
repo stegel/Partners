@@ -1,53 +1,6 @@
-<% form_for @partner do |f| %>
+<% form_for :partner, :url => admin_partner_url(@partner),  :html => { :method => "put"} do |f| %>
 
-	<%= f.label "Company Name" %>
-	<%= f.text_field :name %><br />
-	<%= f.label :first_name %>
-	<%= f.text_field :first_name %><br />
-
-	<%= f.label :last_name %>
-	<%= f.text_field :last_name %><br />
-
-	<%= f.label :address %>
-	<%= f.text_field :address %><br />
-
-	<%= f.label :city%>
-	<%= f.text_field :city %><br />
-
-	<%= f.label :state %>
-	<%= f.text_field :state %><br />
-
-	<%= f.label :zip %>
-	<%= f.text_field :zip %><br />
-
-	<%= f.label "Business Phone" %>
-	<%= f.text_field :business %><br />
-
-	<%= f.label "Cell Phone" %>
-	<%= f.text_field :cell %><br />
-
-	<%= f.label :fax %>
-	<%= f.text_field :fax %><br />
-
-	<%= f.label :website %>
-	<%= f.text_field :website %><br />
-
-	<%= f.label :description %>
-	<%= f.text_area :description, :cols => 20, :rows => 5 %><br />
-
-	<label>Partner Type</label>
-	<select name="partner[partner_type]">
-		<option value="1">Contractor</option>
-		<option value="2">Designer</option>
-		<option value="3">Partner</option>
-	</select><br />
-
-	<label>Photoset</label>
-	<%= f.submit %>
+<%= render :partial => "form", :locals => {:f => f} %>
 
 <% end %>
-	<% @partner.photosets.each do |set| %>
-		<%= set.title %>
-		hello
-	<% end %>
 

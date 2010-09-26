@@ -1,5 +1,7 @@
+<% include_stylesheet 'admin/products' %>
+<h1>Add Partner</h1>
 <% form_for :partner, :url => admin_partners_url do |f| %>
 
-<%= render :partial => "form" %>
+<%= render :partial => "form", :locals => {:f => f} %>
 
 <% end %>

@@ -1,0 +1,11 @@
+.field{
+	clear: both;
+	float: left;
+	width: 125px;
+	font-weight: bold;
+	
+}
+
+.value{
+	float: left;
+}

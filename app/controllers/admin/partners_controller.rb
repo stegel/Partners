@@ -40,4 +40,14 @@ class Admin::PartnersController < ApplicationController
   def show
     @partner = Partner.find_by_id(params[:id])
   end
+  
+  def destroy
+    partner = Partner.find_by_id(params[:id])
+    
+    respond_to do |format|
+      if partner.delete
+        format.html { redirect_to(admin_partners_url, :notice => "Partner was successfully removed.")}
+      end
+    end
+  end
 end

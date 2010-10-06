@@ -11,7 +11,10 @@
 	<tr>
 		<td><%= partner.name %></td>
 		<td><%= link_to partner.website, partner.website  %></td>
-		<td><%= link_to "Edit", edit_admin_partner_url(partner) %></td>
+		<td>
+			<%= link_to "Edit", edit_admin_partner_url(partner) %>&nbsp;|&nbsp;
+			<%= link_to "Delete", admin_partner_url(partner), :method => "delete", :confirm => "Are you sure?" %>
+		</td>
 	</tr>
 <% end %>
 </table>

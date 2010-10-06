@@ -1,5 +1,5 @@
 class Partner < ActiveRecord::Base
-  validates_format_of :website, :with => URI::regexp(%w(http https))
+ validates_format_of :website, :with => URI::regexp(%w(http https)), :allow_blank => true
   
   def photosets
 		output = []

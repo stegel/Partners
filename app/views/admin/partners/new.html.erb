@@ -1,5 +1,14 @@
 <% include_stylesheet 'admin/products' %>
 <h1>Add Partner</h1>
+<% if flash[:warning] or flash[:notice] %>
+  <div id="notice" <% if flash[:warning] %>class="warning"<% end %>>
+    <%= flash[:warning] || flash[:notice] %>
+  </div>
+  <script type="text/javascript">
+    setTimeout("new Effect.Fade('notice');", 15000)
+  </script>
+<% end %>
+
 <% form_for :partner, :url => admin_partners_url do |f| %>
 
 <%= render :partial => "form", :locals => {:f => f} %>

@@ -56,11 +56,7 @@
 </p>
 <p>
 	<label>Photoset</label>
-	<select name="partner[flickr_id]">
-	<% @partner.photosets.each do |set|%>
-		<option value="<%= set['id']%>"><%= set['title']%></option>
-	<% end %>
-	</select>		
+	<%= f.select :flickr_id, options_for_select(@partner.photosets.map{|photoset| [photoset['title'], photoset['id']]}, @partner.flickr_id) %><br /><br />
 </p>
 	<p class="buttons">
 		<%= submit_tag "Save Partner", :class => "button" %> or 

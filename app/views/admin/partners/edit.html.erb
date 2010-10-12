@@ -1,5 +1,5 @@
 <% include_stylesheet 'admin/products' %>
-<h1>Edit @partner.name</h1>
+<h1>Edit <%= @partner.name %></h1>
 <% form_for :partner, :url => admin_partner_url(@partner),  :html => { :method => "put"} do |f| %>
 
 <%= render :partial => "form", :locals => {:f => f} %>

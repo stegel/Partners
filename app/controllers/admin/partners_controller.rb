@@ -16,13 +16,14 @@ class Admin::PartnersController < ApplicationController
     @partner = Partner.new(params[:partner])
     
     respond_to do |format|
-      if @partner.save!
-        format.html { redirect_to(admin_partner_url(@partner), :notice => "Partner was successfully created.")}
-        format.xml {render :xml => @partner, :status => :created, :location => @partner}
-      else
-        format.html { render :action => "new" }
-        format.xml 
-      end
+	begin
+      		@partner.save!
+        	format.html { redirect_to(admin_partner_url(@partner), :notice => "Partner was successfully created.")}
+	        format.xml {render :xml => @partner, :status => :created, :location => @partner}
+     	rescue
+        	format.html { render :action => "new" }
+        	format.xml 
+      	end
     end
   end
   
@@ -33,6 +34,8 @@ class Admin::PartnersController < ApplicationController
       if @partner.update_attributes(params[:partner])
         format.html { redirect_to(admin_partner_url(@partner), :notice => "Partner was successfully updated.")}
         format.xml { head :ok}
+      else
+	render :action => :edit, :notice => "There was an error updating your partner."
       end
      end
   end

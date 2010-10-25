@@ -1,4 +1,5 @@
 class Partner < ActiveRecord::Base
+  belongs_to :partner_type
  validates_format_of :website, :with => URI::regexp(%w(http https)), :allow_blank => true
   
   def photosets
@@ -31,4 +32,7 @@ class Partner < ActiveRecord::Base
     first_name + " " + last_name
   end
 
+  def partners
+    {"1" => "Contractor", "2" => "Designer", "3" => "Partner"}
+  end
 end

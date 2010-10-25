@@ -48,11 +48,9 @@
 </p>
 <p>
 	<label>Partner Type</label>
-	<select name="partner[partner_type]">
-		<option value="1">Contractor</option>
-		<option value="2">Designer</option>
-		<option value="3">Partner</option>
-	</select>
+	
+	<%= f.select :partner_type_id, options_for_select(@partner_types.map{|type| [type.name, type.id]}, @partner.partner_type_id) %><br /><br />
+
 </p>
 <p>
 	<label>Photoset</label>

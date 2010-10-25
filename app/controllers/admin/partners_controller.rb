@@ -6,10 +6,12 @@ class Admin::PartnersController < ApplicationController
 
   def new
     @partner = Partner.new
+    @partner_types = PartnerType.find(:all)
   end
   
 	def edit 
 		@partner = Partner.find_by_id(params[:id])
+    @partner_types = PartnerType.find(:all)
   end
 
   def create

@@ -18,7 +18,7 @@ class PartnerPage < Page
 
 	tag "partners" do |tag|
 		type = tag.attr['type']
-		partners = Partner.find(:all, :conditions => "partner_type = #{type}" )
+		partners = Partner.find(:all, :conditions => "partner_type_id = #{type}", :order => :name )
 		result = []
 		partners.each do |partner|
 			tag.locals.data = partner
